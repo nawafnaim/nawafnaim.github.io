@@ -1,0 +1,119 @@
+body {
+    background-color: rgb(231,238,247) !important;
+    background-image: url('//ssl.gstatic.com/docs/forms/themes/images/v1/0AX42CRMsmRFbUy03NTAzM2Q4My03ODU1LTQ2NzItODI2YS1kZmU5YzdiMzZjOGQ/blue-stripe-bg.png');
+    background-repeat: repeat;
+    background-position: left top;
+}
+
+.container {
+    border-radius: 2px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    margin: 0.75rem auto;
+    background-color: white;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+header {
+    font-size: 3vw;
+    text-align: center;
+    padding: 0.6em;
+}
+
+#test-element {
+    margin: 1em;
+}
+
+.question {
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+#submit-btn {
+    float: right;
+    margin-bottom: 1em;
+}
+
+.unchecked-warning {
+    color: red;
+}
+
+.underlined {
+    border-bottom: red dotted 2px;
+}
+
+.text-input {
+    margin: 1em 0;
+}
+
+.feedback-vid {
+    width: 100%;
+}
+
+.vid-container {
+    width: 45%;
+}
+
+.vid-container:HOVER {
+    width: 100%;
+}
+
+.survey-item {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    border: skyblue 2px solid;
+    margin: 7px 0;
+}
+
+.add-choice {
+    text-align: right;
+}
+
+.add-choice-label {
+    font-size: 1.5rem;
+}
+
+.feedback-type-example {
+    border: 2px red dashed;
+    padding: 1rem;
+    margin: 11px 0;
+    display: inline-block;
+    font-weight: normal;
+}
+
+.error {
+    background-color: yellow;
+}
+
+.item-statement {
+    font-weight: bold;
+}
+
+.centered-content {
+    text-align: center;
+}
+
+.required {
+    border: crimson 2px solid;
+}
+
+.required::before {
+    content: " REQUIRED";
+    color: crimson;
+    font-size: 1rem;
+    display: table-header-group;
+}
+
+.item-choices {
+    text-align: center;
+    margin-top: 10px;
+}
+
+input.choice {
+    margin-bottom: 10px;
+}
+
+.feedback ul {
+    text-align: left;
+}

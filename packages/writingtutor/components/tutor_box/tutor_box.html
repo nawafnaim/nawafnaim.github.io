@@ -1,0 +1,93 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/iron-flex-layout/classes/iron-flex-layout.html">
+<!--<link rel="import" href="../talking_head/talking_head.html">-->
+<link rel="import" href="../../../../packages/polymer_elements/iron_media_query.html">
+<link rel="import" href="../../../../packages/polymer_elements/paper_dialog.html">
+<link rel="import" href="../../../../packages/polymer_elements/paper_button.html">
+
+<dom-module id="tutor-box">
+    <template>
+
+        <link rel="stylesheet" href="tutor_box.css">
+
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+
+            .container {
+                @apply(--layout-vertical);
+                @apply(--layout-flex-12);
+            }
+
+            .container[medium-layout] {
+                height: 88vh;
+            }
+
+            :host([hidden]) {
+                display: none;
+            }
+
+            #tutor {
+                @apply(--layout-vertical);
+                @apply(--layout-flex-4);
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            #tutor[small] {
+                display: none;
+            }
+
+            iron-image {
+                @apply(--layout-flex);
+            }
+
+            #chat {
+                @apply(--layout-vertical);
+                @apply(--layout-flex-8);
+                height: 16vh !important;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            #script {
+                @apply(--layout-flex);
+            }
+
+            #user-input {
+                --paper-input-container-font-size: 34rem;
+                --paper-input-container-color: white;
+                --paper-input-container-focus-color: skyblue;
+                --paper-input-container-input-color: white;
+            }
+
+        </style>
+
+        <iron-media-query query="(max-width: 40em)" query-matches="{{small}}"></iron-media-query>
+        <iron-media-query query="(min-width: 40.063em)" query-matches="{{medium}}"></iron-media-query>
+
+        <div class="container" medium-layout$="{{medium}}">
+
+            <paper-material id="tutor" elevation="2" small-layout$="{{small}}">
+                <iron-image sizing="contain"
+                            src="packages/writingtutor/components/tutor_box/imgs/avatar_trans.png">
+                </iron-image>
+            </paper-material>
+
+            <paper-material id='chat' elevation="2">
+                <ul id="script"></ul>
+            </paper-material>
+
+            <paper-material elevation="2">
+                <paper-input id="user-input"
+                             on-keypress="enter"
+                             type="text"
+                             placeholder="chat...">
+                </paper-input>
+            </paper-material>
+
+        </div>
+
+    </template>
+    <script type="application/dart" src="tutor_box.dart"></script>
+</dom-module>
+
+
+

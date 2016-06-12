@@ -1,0 +1,140 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout_nodart.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout/classes/iron_flex_layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout/classes/iron_shadow_flex_layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout/classes/iron_shadow_flex_layout_nodart.html">
+
+
+<link rel="import" href="../../../../packages/polymer_elements/iron_media_query.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-fab/paper-fab.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-badge/paper-badge.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-toast/paper-toast.html">
+<link rel="import" href="../surveys/safe_html.html">
+<link rel="import" href="../tutor_box/tutor_box.html">
+<link rel="import" href="annotation_keys.html">
+
+<dom-module id="compo-sition">
+    <template>
+        <link rel="stylesheet" href="compo-sition.css">
+
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+
+            :host {
+                --paper-spinner-layer-1-color : red;
+                --paper-spinner-layer-2-color : red;
+                --paper-spinner-layer-3-color : red;
+                --paper-spinner-layer-4-color : red;
+            }
+
+            .container {
+                @apply(--layout-vertical);
+                @apply(--layout-flex-12);
+                height: 91vh;
+            }
+
+            .container[medium-layout] {
+                @apply(--layout-horizontal);
+                height: 88vh;
+            }
+
+            paper-fab[mini] {
+                width: 35px;
+                height: 35px;
+                margin: 0 3px;
+            }
+
+            #editor {
+                @apply(--layout-vertical);
+                @apply(--layout-flex-12);
+            }
+
+            tutor-box {
+                @apply(--layout-flex-4);
+            }
+
+            tutor-box[medium-layout] {
+                margin-left: 10px;
+            }
+
+            #keys {
+                @apply(--layout-flex-1);
+            }
+
+            #writepad {
+                background-color: white;
+                @apply(--layout-flex);
+            }
+
+            #grammar-error-types {
+                @apply(--layout-vertical)
+            }
+
+            #toolbar {
+                @apply(--layout-horizontal);
+                @apply(--layout-self-stretch);
+            }
+
+            #buttons {
+                @apply(--layout-flex-11);
+            }
+
+        </style>
+
+        <iron-media-query query="(min-width: 40.063em)" query-matches="{{medium}}"></iron-media-query>
+        <iron-media-query query="(min-width: 64.063em)" query-matches="{{large}}"></iron-media-query>
+
+        <div class="container" medium-layout$="{{medium}}">
+
+            <paper-material id="editor" elevation="3">
+
+                <div id='toolbar'>
+                    <div id="buttons">
+                        <paper-icon-button icon="undo" on-tap="undo" hidden></paper-icon-button>
+                        <paper-icon-button icon="redo" on-tap="redo" hidden></paper-icon-button>
+                        <paper-icon-button
+                                id="analyze"
+                                icon="find-in-page"
+                                on-tap="submitDraftUpdates"
+                                alt="analyze"
+                                disabled="{{analyzeBtnDisabled}}">
+                        </paper-icon-button>
+                        <paper-icon-button icon="refresh" on-tap="reset" hidden></paper-icon-button>
+                        <paper-icon-button
+                                icon="send"
+                                on-tap="submit"
+                                hidden$="{{submitBtnHidden}}">
+                        </paper-icon-button>
+                    </div>
+                    <paper-spinner id="spinner" alt="Analyzing draft.."></paper-spinner>
+                </div>
+
+
+                <div id='writepad'
+                     contenteditable$="[[contentEditable]]"
+                     tabindex="1"
+                     on-input="submitDraftUpdates"
+                     on-paste="submitDraftUpdates">
+                </div>
+
+                <annotation-keys id="keys" hidden></annotation-keys>
+
+            </paper-material>
+
+            <tutor-box medium-layout$="{{medium}}"></tutor-box>
+
+            <span id='arrow'></span>
+
+            <paper-dialog id='practice'></paper-dialog>
+
+            <paper-dialog id='grammar-error-types'>
+                <div class="buttons"></div>
+            </paper-dialog>
+
+        </div>
+
+    </template>
+    <script type="application/dart" src="compo-sition.dart"></script>
+</dom-module>

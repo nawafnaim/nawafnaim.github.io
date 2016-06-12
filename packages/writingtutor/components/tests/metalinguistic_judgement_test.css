@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(231,238,247);
+    background-image: url('//ssl.gstatic.com/docs/forms/themes/images/v1/0AX42CRMsmRFbUy03NTAzM2Q4My03ODU1LTQ2NzItODI2YS1kZmU5YzdiMzZjOGQ/blue-stripe-bg.png');
+    background-repeat: repeat;
+    background-position: left top;
+}
+
+.container {
+    border-radius: 2px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    margin: 0.75rem auto;
+    background-color: white;
+    height: 90vh;
+    overflow-y: auto;
+    /*font-family: "Times New Roman";*/
+}
+
+header {
+    font-size: 3rem;
+    text-align: center;
+    padding: 0.6em;
+}
+
+#test-element {
+    margin: 1em;
+}
+
+.question {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.choices {
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+#submit-btn {
+    float: right;
+    margin-bottom: 1em;
+}
+
+.unchecked-warning {
+    color: red;
+}
+
+.underlined {
+    border-bottom: red dotted 2px;
+}
+
+.text-input {
+    margin: 1em 0;
+}
+
+.test-text {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+}

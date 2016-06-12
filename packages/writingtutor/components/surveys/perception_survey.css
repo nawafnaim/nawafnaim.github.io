@@ -1,0 +1,72 @@
+.container {
+    border-radius: 2px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    margin: 0.75rem auto;
+    background-color: white;
+    height: 86vh;
+    overflow-y: auto;
+}
+
+header {
+    font-size: 3em;
+    text-align: center;
+    padding: 0.6em;
+}
+
+#about-test {
+    margin-bottom: .5em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+#test-element {
+    margin: 1em;
+}
+
+.question {
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.choices {
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+#submit-btn {
+    float: right;
+    margin: 1em 0;
+    font-size: 2rem;
+    padding: .5rem;
+}
+
+.unchecked-warning {
+    color: red;
+}
+
+.underlined {
+    border-bottom: red dotted 2px;
+}
+
+.text-input {
+    margin: 1em 0;
+}
+
+.feedback-vid {
+    width: 100%;
+}
+
+.vid-container {
+  width: 45%;
+}
+
+.vid-container:HOVER {
+  width: 100%;
+}
+
+.item-index {
+    font-size: 2rem;
+    font-family: "Apple Chancery";
+    font-weight: bold;
+}

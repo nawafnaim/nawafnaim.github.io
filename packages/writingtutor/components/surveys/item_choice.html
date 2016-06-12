@@ -1,0 +1,14 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-input/paper-input.html">
+
+<dom-module id="item-choice" attributes="choice-name choice-value follow-up-items">
+    <template>
+
+        <template is="dom-if" if="{{follow-up-items == null}}">
+            <paper-radio-button name="[[choice-name]]" value="{{choice-value}}">[[choice-name]]</paper-radio-button>
+        </template>
+
+    </template>
+    <script type="application/dart" src="item_choice.dart"></script>
+</dom-module>

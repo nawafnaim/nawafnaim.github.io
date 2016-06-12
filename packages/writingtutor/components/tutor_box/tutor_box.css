@@ -1,0 +1,34 @@
+#user-input {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+}
+
+#script {
+    margin: 2px 5px;
+    -webkit-padding-start: 1px;
+    overflow-y: auto;
+    position: relative;
+}
+
+#script li {
+    list-style-type: none;
+    border-bottom: solid 1px;
+    line-height: 27px;
+    font-size: 14px;
+}
+
+#tutor-list:before {
+    content: "wTutor: ";
+    color: skyblue;
+}
+
+#user-list:before {
+    content: "You: ";
+    color: red;
+}
+
+#practice {
+    font-size: 24pt;
+    line-height: 28pt;
+    padding: 50px;
+}

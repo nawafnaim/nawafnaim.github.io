@@ -1,0 +1,33 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<dom-module id="untimed-grammaticality-judgement-test">
+    <template>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="untimed_grammaticality_judgement_test.css">
+
+        <div class='container'>
+            <header>{{title}}</header>
+            <div id="about-test" class="test-text">The purpose of this test is to get you to judge the acceptability of some English
+                sentences. You will see a series of sentences. These sentences are all different. Some will seem
+                perfectly okay to you, but others will not. What we're after is not what you think of the meaning of the
+                sentence, but what you think of the way it's constructed.
+                <br>
+                <br>
+            </div>
+            <form id="test-form" class="test-text">
+                {{questions.shuffle()}}
+                <template repeat="{{question in questions | enumerate}}">
+                    <div class="question">{{question.index + 1}}. {{question.value}}</div>
+                    <div class="choices">
+                        <input id="grammatical-{{question.index + 1}}" type="radio" name="{{question.value}}" value="grammatical" required>
+                        <label for="grammatical-{{question.index + 1}}">Grammatical</label>
+                        <br>
+                        <input id="ungrammatical-{{question.index + 1}}" type="radio" name="{{question.value}}" value="ungrammatical" required>
+                        <label for="ungrammatical-{{question.index + 1}}">Ungrammatical</label>
+                    </div>
+                </template>
+                <input type="submit" id="submit-btn">
+            </form>
+        </div>
+    </template>
+    <script type="application/dart" src="untimed_grammaticality_judgement_test.dart"></script>
+</dom-module>

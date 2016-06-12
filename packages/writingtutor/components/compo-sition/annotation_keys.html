@@ -1,0 +1,90 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_media_query.html">
+<link rel="import" href="../../../../packages/polymer_elements/paper_dialog.html">
+<link rel="import" href="../../../../packages/polymer_elements/paper_button.html">
+
+<dom-module id="annotation-keys">
+    <template>
+
+        <!--<link rel="stylesheet" href="tutor_box.css">-->
+
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+
+            /*:host {*/
+            /*height: 20vh;*/
+            /*@apply(--layout-self-stretch);*/
+            /*}*/
+
+            .container {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex-12);
+                height: 30px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.2);
+                font-size: 16px;
+                font-family: "Times New Roman";
+            }
+
+            .annotation-key {
+                margin: 8px 5px 5px 5px;
+            }
+
+            .annotation-key:BEFORE {
+                content: '    ';
+                white-space: pre;
+            }
+
+            #verb-annotation-key {
+                -webkit-transition-delay: 0.1s;
+                transition-delay: 0.1s;
+            }
+
+            #verb-annotation-key:BEFORE {
+                background-color: rgba(255, 0, 0, 0.3);
+            }
+
+            #subject-annotation-key {
+                -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s;
+            }
+
+            #subject-annotation-key:BEFORE {
+                background-color: rgba(16, 255, 0, 0.3);
+            }
+
+            #determiner-annotation-key {
+                -webkit-transition-delay: 0.1s;
+                transition-delay: 0.1s;
+            }
+
+            #determiner-annotation-key:BEFORE {
+                background-color: rgba(128, 120, 176, 1);
+            }
+
+            #noun-annotation-key {
+                -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s;
+            }
+
+            #noun-annotation-key:BEFORE {
+                background-color: rgba(255, 213, 0, 0.3);
+            }
+
+        </style>
+
+        <iron-media-query query="(max-width: 40em)" query-matches="{{small}}"></iron-media-query>
+        <iron-media-query query="(min-width: 40.063em)" query-matches="{{medium}}"></iron-media-query>
+
+        <div class="container" medium-layout$="{{medium}}">
+
+                <div id='verb-annotation-key' class='annotation-key' hidden$="{{verb}}"> verb</div>
+                <div id='subject-annotation-key' class='annotation-key' hidden$="{{subject}}"> subject</div>
+                <div id='determiner-annotation-key' class='annotation-key' hidden$="{{determiner}}"> determiner</div>
+                <div id='noun-annotation-key' class='annotation-key' hidden$="{{noun}}"> noun</div>
+
+        </div>
+
+    </template>
+    <script type="application/dart" src="annotation_keys.dart"></script>
+</dom-module>

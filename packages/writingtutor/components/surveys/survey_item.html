@@ -1,0 +1,210 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-card/paper-card.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-tooltip/paper-tooltip.html">
+
+<link rel="import" href="../../../../packages/polymer_elements/src/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout.html">
+
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/scale_up_animation.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/scale_down_animation.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/fade_in_animation.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/fade_out_animation.html">
+<link rel="import" href="safe_html.html">
+
+<dom-module id="survey-item" attributes="item-id statement required item-type input-type open-choice choices selected multiple-select follow-up-items default-follow-up-item">
+  <template>
+
+    <iron-media-query query='(min-width: 900px)' query-matches='{{wide}}'></iron-media-query>
+
+    <link rel="stylesheet" href="../../css/animations.css">
+    <link rel="stylesheet" href="survey_item.css">
+
+    <style is='custom-style' include='iron-flex iron-flex-alignment'>
+
+    :host {
+      --paper-tooltip: {
+        font-size: 0.9rem;
+      };
+    }
+
+    .container {
+      @apply(--layout-vertical);
+      @apply(--layout-self-stretch);
+      @apply(--layout-end);
+      /*font-family: times;*/
+    }
+
+    .container[wide-layout] {
+      @apply(--layout-horizontal);
+    }
+
+    paper-card {
+      @apply(--layout-vertical);
+      @apply(--layout-self-stretch);
+      @apply(--layout-center);
+      --paper-card-header: {
+        @apply(--layout-self-stretch);
+        font-family: times;
+        font-style: italic;
+      };
+      transition: transform 0.6s;
+    }
+
+    .card-content {
+      @apply(--layout-flex-12);
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      padding: 0px 30px;
+    }
+
+    .card-content[wide-layout] {
+      @apply(--layout-flex-9);
+      /*padding-left: 0;*/
+    }
+
+    .card-actions {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+    }
+
+    safe-html::shadow.centered-content {
+      text-align: center;
+    }
+
+    safe-html::shadow.feedback {
+      text-align: left;
+    }
+
+    safe-html::shadow.feedback-type-example {
+      border: 2px red dashed;
+      padding: 1rem;
+      margin: 11px 0;
+      display: inline-block;
+      font-weight: normal;
+    }
+
+    safe-html::shadow.error {
+      background-color: yellow;
+    }
+
+    paper-checkbox, paper-radio-button {
+      @apply(--layout-horizontal);
+      @apply(--layout-self-stretch);
+      padding: 10px 0;
+    }
+
+    .add-choice {
+      @apply(--layout-horizontal);
+      @apply(--layout-end);
+    }
+
+    survey-item {
+      width: 95%;
+      margin-top: 20px;
+    }
+
+    </style>
+
+    <div class="container">
+
+      <paper-card heading='[[item-id]]' wide-layout$='{{wide}}'>
+
+        <div class="card-content" wide-layout$='{{wide}}'>
+          <safe-html text='[[statement]]'></safe-html>
+        </div>
+
+        <div class="card-actions" wide-layout$='{{wide}}'>
+
+          <template is='dom-if' if='{{isTextInput}}'>
+            <template is='dom-repeat' items='{{choices}}' as='choice'>
+              <paper-input label="[[choice.label]]" value="{{choice.value}}"></paper-input>
+            </template>
+          </template>
+
+          <template is='dom-if' if='{{!isTextInput}}'>
+            <template is='dom-if' if='{{!multipleSelect}}'>
+              <paper-radio-group selected='{{selected}}'>
+                <template is='dom-repeat' items='{{choices}}' as='choice'>
+                  <paper-radio-button name='{{choice.name}}'>{{choice.name}}</paper-radio-button>
+                </template>
+              </paper-radio-group>
+            </template>
+
+            <template is='dom-if' if='{{multipleSelect}}'>
+              <template is='dom-repeat' items='{{choices}}' as='choice'>
+                <paper-checkbox checked='{{choice.selected}}'>{{choice.name}}</paper-checkbox>
+              </template>
+            </template>
+
+            <template is='dom-if' if='{{openChoice}}'>
+              <div class='add-choice'>
+                <paper-input id='added-choice'
+                on-keypress='addChoice'
+                placeholder='add choice'>
+              </paper-input>
+              <paper-icon-button icon='add-circle' on-click='addChoice'></paper-icon-button>
+            </div>
+          </template>
+        </template>
+
+
+      </div>
+
+    </paper-card>
+
+    <template is='dom-if' if='{{multipleSelect}}'>
+      <template is='dom-repeat' items='{{choices}}' as='choice'>
+        <template is='dom-repeat' items='{{choice.followUpItems}}' as='choiceFollowUp'>
+
+          <template is='dom-if' if='{{choice.selected}}'>
+            <survey-item class='choice-follow-up' wide-layout$='{{wide}}'
+            required$='[[choiceFollowUp.required]]'
+            multiple-select$='[[choiceFollowUp.multipleSelect]]'
+            open-choice$='[[choiceFollowUp.openChoice]]'
+            item-type='[[choiceFollowUp.itemType]]'
+            choices='{{choiceFollowUp.choices}}'
+            statement='[[choiceFollowUp.statement]]'
+            selected='{{choiceFollowUp.selected}}'
+            follow-up-items='{{choiceFollowUp.followUpItems}}'
+            default-follow-up-item='{{choiceFollowUp.defaultFollowUpItem}}'
+            item-id='{{choice.name}}'
+            ></survey-item>
+          </template>
+
+        </template>
+
+      </template>
+    </template>
+
+    <template is='dom-if' if='{{isNotEmpty(selected)}}'>
+
+      <template is='dom-repeat' items='{{followUpItems}}'>
+
+        <survey-item
+        required$='[[item.required]]'
+        multiple-select$='[[item.multipleSelect]]'
+        open-choice$='[[item.openChoice]]'
+        item-type='[[item.itemType]]'
+        choices='{{item.choices}}'
+        statement='[[item.statement]]'
+        selected='{{item.selected}}'
+        follow-up-items='{{item.followUpItems}}'
+        default-follow-up-item='{{item.defaultFollowUpItem}}'
+        item-id='{{smallLetter(index)}}'
+        ></survey-item>
+
+      </template>
+
+    </template>
+
+  </div>
+
+</template>
+
+
+<script type="application/dart" src="survey_item.dart"></script>
+</dom-module>

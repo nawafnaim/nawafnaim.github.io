@@ -1,0 +1,96 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/writingtutor/components/surveys/perception_survey.html">
+<!--<link rel="import" href="packages/writingtutor/components/database/database_editor.html">-->
+<link rel="import" href="../../packages/writingtutor/components/compo-sition/compo-sition.html">
+<link rel="import" href="../../packages/writingtutor/components/main_menu/main_menu.html">
+<link rel="import" href="../../packages/writingtutor/components/login_dialog/login_dialog.html">
+<link rel="import" href="../../packages/writingtutor/components/tutor_box/tutor_box.html">
+<link rel="import" href="../../packages/writingtutor/components/talking_head/talking_head.html">
+<link rel="import" href="../../packages/polymer_elements/src/iron-icons/iron-icons.html">
+<link rel="import" href="../../packages/polymer_elements/iron_media_query.html">
+<link rel="import" href="../../packages/polymer_elements/src/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../../packages/polymer_elements/src/paper-radio-button/paper-radio-button.html">
+
+<link rel="import" href="../../packages/polymer_elements/neon_animation/animations/slide_from_right_animation.html">
+<link rel="import" href="../../packages/polymer_elements/neon_animation/animations/slide_left_animation.html">
+<link rel="import" href="../../packages/polymer_elements/neon_animation/animations/fade_in_animation.html">
+<link rel="import" href="../../packages/polymer_elements/neon_animation/animations/fade_out_animation.html">
+
+<dom-module id="w-tutor" attributes="message">
+    <template>
+        <link rel="stylesheet" href="css/wtutor.css">
+
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+
+            .container {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                width: 100vw;
+                height: 97vh;
+            }
+
+            .container[medium-layout] {
+                width: 90vw;
+            }
+
+            .container[large-layout] {
+                width: 60vw;
+                min-width: 800px;
+            }
+
+            #main-content {
+                @apply(--layout-self-stretch);
+                @apply(--layout-horizontal);
+            }
+
+            #message {
+                max-width: 50vw !important;
+                padding: 10px;
+            }
+
+            .message-text {
+                font-family: time;
+                font-size: 1.3rem;
+            }
+
+            .title {
+                color: skyblue;
+                font-family: times;
+                font-size: 3rem;
+                font-style: oblique;
+                margin-left: 0 !important;
+                background-color: transparent;
+                padding: 20px;
+            }
+
+        </style>
+
+        <iron-media-query query="(min-width: 40.063em)" query-matches="{{medium}}"></iron-media-query>
+        <iron-media-query query="(min-width: 64.063em)" query-matches="{{large}}"></iron-media-query>
+
+        <div class=title>wTutor</div>
+
+        <div class="container" medium-layout$="{{medium}}" large-layout$="{{large}}">
+
+            <login-dialog></login-dialog>
+            <paper-dialog id="message"
+                          entry-animation="scale-up-animation"
+                          exit-animation="scale-down-animation">
+                <span class="message-text">[[message]]</span>
+
+            </paper-dialog>
+
+            <neon-animated-pages
+                    id="main-content"
+                    class="flex"
+                    selected="[[selected]]"
+                    entry-animation="slide-from-right-animation"
+                    entry-animation="fade-in-animation"
+                    exit-animation="slide-left-animation"
+                    exit-animation="fade-out-animation">
+            </neon-animated-pages>
+
+        </div>
+    </template>
+    <script type="application/dart" src="wtutor.dart"></script>
+</dom-module>

@@ -1,0 +1,27 @@
+body {
+    background-color: black !important;
+    background-image: url('../img/noise.png');
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin: 0 auto;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+* {
+    outline: none;
+}
+
+
+
+
+
+
+
+
+

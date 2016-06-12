@@ -1,0 +1,218 @@
+.shake {
+    perspective: 500px;
+    animation: shake 0.5s linear;
+}
+
+@-webkit-keyframes shake {
+    0% {
+        transform: rotateZ(5deg);
+    }
+    25% {
+        transform: rotateZ(-5deg);
+    }
+    50% {
+        transform: rotateZ(5deg);
+    }
+    75% {
+        transform: rotateZ(-5deg);
+    }
+    100% {
+        transform: rotateZ(5deg);
+    }
+}
+
+.enter-right {
+    position: fixed;
+    -webkit-animation: enterRight 0.8s ease-in;
+}
+
+@-webkit-keyframes enterRight {
+    from {
+        right: -100%;
+        visibility: hidden;
+        opacity: 0.0;
+    }
+    to {
+        right: 0;
+        visibility: visible;
+        opacity: 1.0;
+    }
+}
+
+.exit-left {
+    position: fixed;
+    -webkit-animation: exitLeft 0.8s ease-in;
+}
+
+@-webkit-keyframes exitLeft {
+    from {
+        opacity: 1.0;
+        left: 0;
+        visibility: visible;
+    }
+    to {
+        left: -100%;
+        visibility: hidden;
+        opacity: 0.0;
+    }
+}
+
+.exit-right {
+    position: fixed;
+    -webkit-animation: exitRight 0.8s ease-in;
+}
+
+@-webkit-keyframes exitRight {
+    from {
+        opacity: 1.0;
+        right: 0;
+        visibility: visible;
+    }
+    to {
+        right: -100%;
+        opacity: 0.0;
+        visibility: hidden;
+    }
+}
+
+.enter-left {
+    position: fixed;
+    -webkit-animation: enterLeft 0.8s ease-in;
+}
+
+@-webkit-keyframes enterLeft {
+    from {
+        opacity: 0.0;
+        left: -100%;
+    }
+    to {
+        left: 0;
+        opacity: 1.0;
+    }
+}
+
+
+.exit-top {
+    position: fixed;
+    -webkit-animation: exitTop 0.8s ease-in;
+}
+
+@-webkit-keyframes exitTop {
+    from {
+        top: 0;
+        visibility: visible;
+        opacity: 1.0;
+    }
+    to {
+        top: -100%;
+        visibility: hidden;
+        opacity: 0.0;
+    }
+}
+
+.enter-top {
+    position: fixed;
+    -webkit-animation: enterTop 0.8s ease-in;
+}
+
+@-webkit-keyframes enterTop {
+    from {
+        top: -100%;
+        opacity: 0.0;
+    }
+    to {
+        top: 0;
+        opacity: 1.0;
+    }
+}
+
+.enter-bottom {
+    position: fixed;
+    -webkit-animation: enterBottom 0.8s ease-in;
+}
+
+@-webkit-keyframes enterBottom {
+    from {
+        bottom: -100%;
+        opacity: 0.0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1.0;
+    }
+}
+
+.exit-bottom {
+    position: fixed;
+    -webkit-animation: exitBottom 0.8s ease-in;
+}
+
+@-webkit-keyframes exitBottom {
+    from {
+        bottom: 0;
+        opacity: 1.0;
+    }
+    to {
+        bottom: -100%;
+        opacity: 0.0;
+    }
+}
+
+.slide-from-bottom {
+    -webkit-animation: slideFromBottom 1s linear;
+    animation: slideFromBottom 1s linear;
+}
+
+@-webkit-keyframes slideFromBottom {
+    0% {
+        visibility: hidden;
+        opacity: 0.0;
+        bottom: -25px;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1.0;
+        bottom: 0;
+    }
+}
+
+.zoom-out {
+    -webkit-animation: zoomOut 1s linear;
+}
+
+@-webkit-keyframes zoomOut {
+    0% {
+        width: 100%;
+    }
+    90% {
+        width: 0%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+@-webkit-keyframes zoomIn {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.zoom-out {
+    -webkit-animation: zoomOut 1s linear;
+}
+
+@-webkit-keyframes zoomOut {
+    0% {
+        width: 100%;
+    }
+    90% {
+        width: 0%;
+    }
+    100% {
+        width: 0%;
+    }
+}

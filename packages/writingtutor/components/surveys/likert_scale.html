@@ -1,0 +1,79 @@
+<!--<link rel="import" href="../../../../packages/polymer/polymer.html">-->
+<!--<link rel="import" href="../../../../packages/polymer_elements/src/paper-radio-button/paper-radio-button.html">-->
+<!--<link rel="import" href="../../../../packages/polymer_elements/src/paper-card/paper-card.html">-->
+<!--<link rel="import" href="../../models/item_choice.html">-->
+
+<!--<dom-module id="likert-scale" attributes="item-id is-required statement choices multiple-select open-choice default-follow-up-item follow-up-items">-->
+    <!--<template>-->
+
+        <!--&lt;!&ndash;<link rel="stylesheet" href="likert_scale.css">&ndash;&gt;-->
+        <!--<fieldset id="[[item-id]]" class="survey-item">-->
+            <!--&lt;!&ndash;<label class="item-statement" value="[[statement]]">{{markdownToHtml(statement)}}</label>&ndash;&gt;-->
+            <!--<div class="item-choices">-->
+                <!--<template is="dom-repeat" items="{{choices}}" as="choice">-->
+
+                    <!--<item-choice name="[[choice.name]]" value="{{choice.value}}"></item-choice>-->
+
+                    <!--&lt;!&ndash;<template is="dom-if" if="{{choice.follow-up-items == null}}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div>{{choice.name}}</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<template is="dom-if" if="{{choice.follow-up-items != null}}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div>{{choice.name}}</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<template is="dom-if" if="{{choice.followUpItems == null}}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input class="choice"&ndash;&gt;-->
+                               <!--&lt;!&ndash;id="[[item-id]]-choice-{{index}}"&ndash;&gt;-->
+                               <!--&lt;!&ndash;type="[[type]]"&ndash;&gt;-->
+                               <!--&lt;!&ndash;name="[[item-id]]-[[statement]]"&ndash;&gt;-->
+                               <!--&lt;!&ndash;value="{{choice.name}}"&ndash;&gt;-->
+                               <!--&lt;!&ndash;on-change="change">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="[[item-id]]-choice-{{index}}">{{choice.name}}</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<template is="dom-if" if="{{choice.followUpItems != null}}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input class="choice"&ndash;&gt;-->
+                               <!--&lt;!&ndash;id="[[item-id]]-choice-{{index}}"&ndash;&gt;-->
+                               <!--&lt;!&ndash;type="[[type]]"&ndash;&gt;-->
+                               <!--&lt;!&ndash;name="[[item-id]]-[[statement]]"&ndash;&gt;-->
+                               <!--&lt;!&ndash;value="{{choice.name}}"&ndash;&gt;-->
+                               <!--&lt;!&ndash;on-change="change">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="[[item-id]]-choice-{{index}}">{{choice.name}}</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<template is="dom-if" if="{{choice.value == true}}">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<template is="dom-repeat" items="{{choice.followUpItems}}" as="followUpItem">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<likert-scale&ndash;&gt;-->
+                                        <!--&lt;!&ndash;statement="{{followUpItem.statement}}"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;choices="{{followUpItem.choices}}"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;is-required="{{followUpItem.isRequired}}"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;multiple-select="{{followUpItem.multipleSelect}}"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;open-choice="{{followUpItem.openChoice}}"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;default-follow-up-item="{{followUpItem.defaultFollowUpItem}}">&ndash;&gt;-->
+                                <!--&lt;!&ndash;</likert-scale>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                <!--</template>-->
+                <!--&lt;!&ndash;<template is="dom-if" if="{{follow-up-items != null && selected}}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<template is="dom-repeat" items="{{follow-up-items}}" as="followUpItem">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<likert-scale&ndash;&gt;-->
+                                <!--&lt;!&ndash;statement="{{followUpItem.statement}}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;choices="{{followUpItem.choices}}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;is-required="{{followUpItem.isRequired}}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;multiple-select="{{followUpItem.multipleSelect}}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;open-choice="{{followUpItem.openChoice}}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;default-follow-up-item="{{followUpItem.defaultFollowUpItem}}"></likert-scale>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                <!--&lt;!&ndash;</template>&ndash;&gt;-->
+
+            <!--</div>-->
+            <!--&lt;!&ndash;<template is="dom-if" if="{{open-choice == true}}">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="add-choice">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="add-choice-label">If you used other AWE software, please add here.</label> <br>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input id="add" type="text" name=[[statement]] value=""> <button on-click="addChoice">Add</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</template>&ndash;&gt;-->
+        <!--</fieldset>-->
+
+    <!--</template>-->
+    <!--<script type="application/dart" src="likert_scale.dart"></script>-->
+<!--</dom-module>-->

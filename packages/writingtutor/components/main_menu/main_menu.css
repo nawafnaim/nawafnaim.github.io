@@ -1,0 +1,38 @@
+#menu {
+    margin-left: 1.5vw;
+    -webkit-transition: text-align 1s, padding-top 1s;
+}
+
+.login-menu {
+}
+
+#logo {
+    color: skyblue;
+    font-family: times;
+    line-height: 8vh;
+    font-size: 48px;
+    text-decoration: none;
+    font-style: oblique;
+    z-index: 1;
+    -webkit-transition: font-size 1s, padding-left 1s, line-height 1s;
+}
+
+.login-logo {
+    font-size: 14vw !important;
+    padding-left: 19vw !important;
+    line-height: 30vh !important;
+}
+
+#logout {
+    visibility: hidden;
+}
+
+.menu-item {
+    opacity: 0.0;
+    font-size: 20pt;
+    color: azure;
+    left: -8vw;
+    -webkit-transition: left 1s, opacity 1s;
+    position: relative;
+    z-index: 0;
+}

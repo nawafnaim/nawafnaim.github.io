@@ -1,0 +1,155 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="survey_item.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-fab/paper-fab.html">
+<link rel="import" href="../../../../packages/polymer_elements/src/paper-card/paper-card.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/scale_up_animation.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/scale_down_animation.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout_nodart.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout/classes/iron_flex_layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout/classes/iron_shadow_flex_layout.html">
+<link rel="import" href="../../../../packages/polymer_elements/iron_flex_layout/classes/iron_shadow_flex_layout_nodart.html">
+
+<dom-module id="perception-survey" attributes="survey-items title item-type">
+    <template>
+        <!--<link rel="stylesheet" href="perception_survey.css">-->
+
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+
+            :host {
+                @apply(--layout-vertical);
+                font-family: times;
+            }
+
+            .container {
+                @apply(--layout-vertical);
+                @apply(--layout-self-stretch);
+                @apply(--layout-flex);
+                overflow-x: auto;
+                /*height: 88vh;*/
+                /*height: 90vh;*/
+                background-color: rgba(0, 0, 0, 0.3);
+                transition: scroll;
+            }
+
+            #header {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
+                @apply(--layout-flex-2);
+                color: white;
+                margin: 15px 0;
+                height: 100vh;
+            }
+
+            #title {
+                @apply(--layout-flex-2);
+                @apply(--layout-center);
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            #title[wide-layout] {
+                font-size: 2rem;
+            }
+
+            #about-test {
+                @apply(--layout-flex-10);
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+                padding: 0 5px;
+                border-left: 1px solid white;
+            }
+
+            #items {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                @apply(--layout-flex-9);
+            }
+
+            survey-item {
+                width: 97%;
+                margin-bottom: 10px;
+            }
+
+            survey-item[wide-layout] {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .buttons {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                width: 97%;
+            }
+
+            .buttons[wide-layout] {
+                @apply(--layout-end);
+                width: 90%;
+            }
+
+            paper-button {
+                background-color: white;
+                margin: 0;
+            }
+
+            paper-fab {
+                pointer-events: visible;
+            }
+
+            paper-fab:hover {
+                box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
+            }
+
+            #actions {
+                @apply(--layout-horizontal);
+                @apply(--layout-end-justified);
+                transform: translateY(-115%);
+                margin: 0 1rem 0 0;
+                pointer-events: none;
+            }
+
+        </style>
+
+        <iron-media-query query="(min-width: 900px)" query-matches='{{wide}}'></iron-media-query>
+
+        <paper-material class='container' >
+
+            <div id="header">
+                <div id="title" wide-layout$='{{wide}}'>Survey</div>
+                <div id="about-test" wide-layout$='{{wide}}'>This survey asks for your opinion, preferences and experience with automated writing evaluation
+                    software and automated error correction.</div>
+            </div>
+
+            <div id="items">
+
+                <template is='dom-repeat' items='{{survey-items}}'>
+
+                    <survey-item
+                            wide-layout$='{{wide}}'
+                            required$='[[item.required]]'
+                            multiple-select$='[[item.multipleSelect]]'
+                            open-choice$='[[item.openChoice]]'
+                            item-type='[[item.itemType]]'
+                            input-type='[[item.inputType]]'
+                            choices='{{item.choices}}'
+                            statement='[[item.statement]]'
+                            selected='{{item.selected}}'
+                            follow-up-items='{{item.followUpItems}}'
+                            default-follow-up-item='{{item.defaultFollowUpItem}}'
+                    ></survey-item>
+
+                </template>
+
+            </div>
+
+        </paper-material>
+
+        <div id="actions">
+            <paper-fab icon="send" title="submit" class="blue" on-click='submitForm'></paper-fab>
+        </div>
+
+    </template>
+    <script type="application/dart" src="perception_survey.dart"></script>
+</dom-module>

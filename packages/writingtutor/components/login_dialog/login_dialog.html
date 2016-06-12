@@ -1,0 +1,33 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/scale_up_animation.html">
+<link rel="import" href="../../../../packages/polymer_elements/neon_animation/animations/scale_down_animation.html">
+
+<dom-module id="login-dialog">
+    <template>
+        <link rel="stylesheet" href="login_dialog.css">
+
+        <paper-dialog id="login" entry-animation="scale-up-animation"
+                      exit-animation="scale-down-animation">
+            <div>
+                <span id="warning">Wrong email or password!</span>
+                <paper-input id="email"
+                             title="email"
+                             type="email"
+                             error-message="Not a valid email!"
+                             label="email"
+                             autofocus
+                             disabled>
+                </paper-input>
+                <!--<label for="password">password</label>-->
+                <paper-input id="password"
+                             title="password"
+                             type="password"
+                             label="password" disabled></paper-input>
+            </div>
+            <div>
+                <paper-button raised id="login-btn" on-click="login" disabled><paper-icon icon="favorite"></paper-icon>Login</paper-button>
+            </div>
+        </paper-dialog>
+    </template>
+    <script type="application/dart" src="login_dialog.dart"></script>
+</dom-module>

@@ -1,0 +1,95 @@
+body {
+    background-color: black !important;
+    background-image: url('../img/noise.png');
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin: 0 auto;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+* {
+    outline: none;
+}
+
+/*#stats {*/
+    /*width: 10em;*/
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    /*height: 6em;*/
+    /*color: white;*/
+    /*border: solid .2em white;*/
+    /*border-radius: 10px;*/
+    /*margin-left: .7em;*/
+    /*padding: 1em;*/
+    /*line-height: 2em;*/
+/*}*/
+
+
+
+/*#loginDiv {*/
+    /*height: 20em;*/
+    /*width: 40em;*/
+    /*position: fixed;*/
+    /*top: 30%;*/
+    /*left: 38%;*/
+    /*border-radius: 1.2em;*/
+    /*background: rgba(0, 0, 0, 0.3);*/
+/*}*/
+
+
+
+/*
+.annotation:after {
+  width: 35em;
+  font-size: medium;
+}
+
+.tip:hover:after {
+  left: 20%;
+  bottom: 100%;
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  color: #fff;
+  content: attr(info);
+  white-space:pre;
+  word-break: break-word;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+}
+
+.tip:hover:before{
+  left: 50%;
+  bottom: 90%;
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  content: "";
+  position: absolute;
+  z-index: 99;
+}
+*/
+
+.research-form {
+    position: fixed;
+    top: 67px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+

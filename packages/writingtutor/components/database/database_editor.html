@@ -1,0 +1,16 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<!--<link rel='import' href='../../../../packages/bwu_datagrid/bwu_datagrid.html'>-->
+<dom-module id="database-editor">
+    <template>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="database_editor.css">
+
+        <div class='container'>
+            <header>{{title}}</header>
+            <div class="row">
+                <bwu-datagrid id="grid" style='height:80vh;'></bwu-datagrid>
+            </div>
+        </div>
+    </template>
+    <script type="application/dart" src="database_editor.dart"></script>
+</dom-module>

@@ -1,0 +1,35 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../surveys/likert_scale.html">
+<dom-module id="timed-grammaticality-judgement-test">
+    <template>
+        <link rel="stylesheet"
+              href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="timed_grammaticality_judgement_test.css">
+
+        <div class='container'>
+            <header>{{title}}</header>
+            <div id="about-test" class="test-text">The purpose of this test is to get you to judge the acceptability of some English
+                sentences. You will see a series of sentences. These sentences are all different. Some will seem
+                perfectly okay to you, but others will not. What we're after is not what you think of the meaning of the
+                sentence, but what you think of the way it's constructed.
+                <br>
+                <br>
+                You have limited time to answer each item.
+                <br>
+                <br>
+                <button id="start">START</button>
+                <progress value="{{curTimeout}}" max="{{maxTimeout}}"></progress>
+            </div>
+            <form id="test-form" class="test-text">
+                <div class="question">{{itemNum}}/{{itemNums}}.</div>
+
+                <likert-scale itemId="{{curItem.id}}" statement="{{curItem.statement}}" choices="{{curItem.choices}}"
+                              multipleSelect="{{curItem.multipleSelect.toString()}}"
+                              openChoice="{{curItem.openChoice.toString()}}"
+                              defaultFollowUpStatement="{{curItem.defaultFollowUpStatement}}"></likert-scale>
+                <!--<button id="next" on-click="{{nextItem}}">Next</button>-->
+            </form>
+        </div>
+    </template>
+    <script type="application/dart" src="timed_grammaticality_judgement_test.dart"></script>
+</dom-module>

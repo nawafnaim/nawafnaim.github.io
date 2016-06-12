@@ -1,0 +1,38 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<polymer-element name="metalinguistic-judgement-test">
+    <template>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="metalinguistic_judgement_test.css">
+
+        <div class='container'>
+            <header>{{title}}</header>
+            <div id="about-test" class="test-text">The following sentences are ungrammatical (contain grammar mistakes). Do the following for each sentence:
+                <ol type="a">
+                    <li>correct the error and</li>
+                    <li>explain what was wrong with the sentence.</li>
+                </ol>
+
+                Example:<br>
+                <b>My name <span class="underlined">are</span> Joe.</b>
+                <ol type="a">
+                    <li>My name is Joe.</li>
+                    <li>“My name” is a singular subject but “are” is a plural verb.</li>
+                </ol>
+            </div>
+            <form id="test-form" class="test-text">
+                {{questions.shuffle()}}
+                <template repeat="{{question in questions}}">
+                    <div class="question">{{question}}</div>
+                    <div class="choices">
+                        <ol type="a">
+                            <li class="text-input"> <input class="answer" type="text" question="{{question}}" placeholder="correct sentence" size="60" required> </li>
+                            <li class="text-input"> <input class="answer" type="text" question="{{question}}" placeholder="explain what's wrong" size="60" required> </li>
+                        </ol>
+                    </div>
+                </template>
+                <input type="submit" id="submit-btn">
+            </form>
+        </div>
+    </template>
+    <script type="application/dart" src="metalinguistic_judgement_test.dart"></script>
+</polymer-element>
